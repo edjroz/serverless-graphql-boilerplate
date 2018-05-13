@@ -1,0 +1,58 @@
+service: serverless-graphql-dynamo
+
+frameworkVersion: ">=1.21.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-webpack
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    port: 4000
+  webpackIncludeModules: true
+  # dynamodb:
+  #   start:
+  #     port: 8000
+  #     inMemory: true
+  #     migrate: true
+  #     seed: true
+  #   seed:
+  #     test:
+  #       sources:
+  #         - table: Users
+  #           sources: [seed-data/Users.json]
+  #         - table: Tweets
+  #           sources: [seed-data/Tweets.json]
+
+functions:
+  graphql:
+    handler: handler.graphqlHandler
+    role: ServiceRole
+    events:
+    - http:
+        path: graphql
+        method: post
+        cors: true
+  playground:
+    handler: handler.playgroundHandler
+    role: ServiceRole
+    events:
+    - http:
+        path: playground
+        method: get
+        cors: true
+  graphiql:
+    handler: handler.graphiqlHandler
+    role: ServiceRole
+    events:
+    - http:
+        path: graphiql
+        method: get
+        cors: true
