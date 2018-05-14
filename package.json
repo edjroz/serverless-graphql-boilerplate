@@ -24,7 +24,6 @@
     "aws-sdk": "^2.192.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-plugin-inline-import-graphql-ast": "^2.3.7",
     "babel-preset-env": "^1.6.1",
     "body-parser": "^1.15.2",
     "cors": "2.8.4",
@@ -40,8 +39,7 @@
   },
   "ava": {
     "require": [
-      "babel-register",
-      "babel-plugin-inline-import-graphql-ast"
+      "babel-register"
     ],
     "babel": "inherit"
   }
