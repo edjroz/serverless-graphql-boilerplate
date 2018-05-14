@@ -2,7 +2,7 @@
   "name": "serverless-graphql-boilerplate",
   "version": "0.1.0",
   "scripts": {
-    "test": "ava",
+    "test": "jest",
     "start": "sls offline start"
   },
   "dependencies": {
@@ -20,7 +20,6 @@
     "serverless-dynamodb-client": "^0.0.2"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
     "aws-sdk": "^2.192.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -32,17 +31,18 @@
     "faker": "^4.1.0",
     "graphql-tag": "^2.9.2",
     "imports-loader": "^0.7.1",
+    "jest": "^22.4.3",
+    "jest-transform-graphql": "^2.1.0",
     "jsonfile": "^4.0.0",
     "serverless-dynamodb-local": "^0.2.26",
     "serverless-webpack": "^4.1.0",
     "webpack": "^3.8.1",
     "webpack-node-externals": "^1.6.0"
   },
-  "ava": {
-    "require": [
-      "babel-register",
-      "babel-plugin-inline-import-graphql-ast"
-    ],
-    "babel": "inherit"
+  "jest": {
+    "transform": {
+      "\\.(gql|graphql)$": "jest-transform-graphql",
+      ".*": "babel-jest"
+    }
   }
 }

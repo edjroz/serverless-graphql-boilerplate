@@ -1,10 +1,9 @@
 import { graphqlHandler, playgroundHandler } from '../../handler';
-import test from 'ava';
 
-test('graphqlHandler should be a function', t => 
-  t.is(typeof graphqlHandler, 'function')
-);
+it('graphqlHandler should be a function', () => {
+  expect(typeof graphqlHandler).toBe('function');
+});
 
-test('playgroundHandler should be a function', t => 
-  t.is(typeof playgroundHandler,'function')
-);
+it('playgroundHandler should be a function', () => {
+  expect(typeof playgroundHandler).toBe('function');
+});
