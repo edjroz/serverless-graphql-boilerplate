@@ -1,9 +1,7 @@
 const { fileLoader, mergeTypes } = require('merge-graphql-schemas');
 const path = require('path');
-const issueType = require('./types/node.graphql');
+const typesDir = path.join(__dirname, 'types');
 
-const typesArray = [issueType];
-
-const typeDefs = mergeTypes(typesArray, { all: true });
+const typeDefs = mergeTypes(fileLoader(typesDir), { all: true });
 
 module.exports = typeDefs;
